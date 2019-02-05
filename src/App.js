@@ -1,24 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* import './App.css'; */
+import List from './List';
+import Stage from './Stage';
+
 
 class App extends Component {
+  static defaultProps = {
+    participants: {
+      name: [],
+      avatar: [],
+      inSession: {}
+    }
+  }
+
   render() {
+    const {participants} = this.props;
+    const stagedUsers = participants.filter(user => user.onStage)
+    console.log(stagedUsers)
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <div className="participants-list">
+            {participants.map((list, i) => (
+              <List
+                key={i}
+                name={list.name}
+                avatar={list.avatar}
+              />
+            ))}
+          </div>
+          <div className="stage-list">
+            {stagedUsers.map((list, i) => (
+                <Stage
+                  key={i}
+                  name={list.name}
+                  avatar={list.avatar}
+                />
+              
+              ))}  
+          </div>
         </header>
       </div>
     );

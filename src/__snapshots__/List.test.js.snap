@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders expected list 1`] = `
+<div>
+  <img
+    alt="avatar"
+  />
+  <h2
+    className="name"
+  />
+  <p />
+  <p />
+</div>
+`;
